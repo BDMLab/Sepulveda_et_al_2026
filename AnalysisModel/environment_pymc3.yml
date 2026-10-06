@@ -1,0 +1,24 @@
+name: peb-model-fit
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - python=3.11
+  - pymc=5
+  - pytensor
+  - arviz
+  - numpy
+  - pandas
+  - scipy
+  - matplotlib
+  - seaborn
+  - scikit-learn
+  - statsmodels
+  - ipython
+  - ipykernel
+  - jupyterlab
+  - notebook
+  - tqdm
+  - netcdf4
+  - h5netcdf
+  - pip
