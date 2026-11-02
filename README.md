@@ -73,6 +73,21 @@ Run each notebook from its own folder; data are read via relative paths (`../Dat
 
 `PupilAnalysis/PupilAnalysis.ipynb` expects the EyeLink DataViewer sample report `eye_infoFull_report_fix_blink_100Hz.txt.xz` (xz-compressed, 38 MB; read directly by pandas) and per-participant behavioural files `pilot<N>/RESULTS_FILE.txt` in `Data/DataPupil_Exp4/`. The permutation test takes several hours; its saved output is `PupilAnalysis/Permutation_GroupRegression_Results_50perms.csv`.
 
+
+### License.
+
+The code in this repository is released under the MIT License (see the `LICENSE` file).
+You are free to use or adapt it under those terms. If you use or build on these
+analyses, we would appreciate it if you cite the paper (see Citation above).
+
+The bundled `PupilAnalysis/FIRDeconvolution-master/` package is third-party code
+by T. Knapen and is distributed under its own MIT License, included in that folder.
+
+The data in `Data/` are released under the Creative Commons Attribution 4.0
+International License (CC BY 4.0).
+
+
+
 ## Citation
 
 ```bibtex
