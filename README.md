@@ -54,6 +54,30 @@ PupilAnalysis/
 
 **Pupillometry (`PupilAnalysis/`).** Blink interpolation and blink/saccade nuisance regression via FIR deconvolution (Knapen et al., 2016), downsampling to 100 Hz and baseline correction. At each time point, per participant and frame, pupil size is regressed on chosen evidence, unchosen evidence, RT and gaze position. Group-level frame differences are tested by permutation, with Benjamini–Hochberg FDR correction across time points (α = 0.01) and a minimum cluster of 6 consecutive samples (60 ms).
 
+
+
+## System requirements
+
+**Operating systems tested:** macOS Tahoe, Version 26.6.2
+
+Versions tested:
+- Python 3.11.15
+- PyMC 5.28.5 (PyTensor 2.38.3)
+- ArviZ 0.23.4
+- NumPy 2.4.6
+- pandas 3.0.5
+- SciPy 1.17.1
+- statsmodels 0.14.6
+- scikit-learn 1.9.0
+- xarray 2026.7.0, netCDF4 1.7.4, h5netcdf 1.8.1 (reading and writing `.nc` posterior traces)
+- matplotlib 3.11.1, seaborn 0.13.2
+- python-graphviz 0.21 (model graph plots)
+- JupyterLab 4.6.3, ipykernel 7.3.0
+
+**Hardware:** No non-standard hardware is required. All analyses run on a standard desktop or laptop computer. The EyeLink eye tracker was used only to collect the data, not to run the code.
+
+
+
 ## Installation
 
 Model fitting:
@@ -65,6 +89,11 @@ conda activate peb-model-fit
 
 Behavioural analyses also need R (≥ 4.x) with `lme4` and `lmerTest`, plus `pymer4` (0.9) and `polars` in Python. The pupil notebook also needs `lmfit`; it adds the bundled `FIRDeconvolution` package to the path itself.
 
+
+Typical install time on a normal desktop computer: a couple of minutes (mostly creating the conda environment and downloading packages).
+
+
+
 ## Running
 
 Run each notebook from its own folder; data are read via relative paths (`../Data/...`). The behaviour notebook imports `functionsSims.py` from `../AnalysisModel`. Run the `AnalysisModel/exp*_{Normal,gamma}Prior.ipynb` notebooks before the corresponding `Figure_exp1-4_ModelFit_*` notebook so the `.nc` posterior traces exist. Figures are saved to `figs/` and `figures/` subfolders.
@@ -72,6 +101,11 @@ Run each notebook from its own folder; data are read via relative paths (`../Dat
 ### Pupil data
 
 `PupilAnalysis/PupilAnalysis.ipynb` expects the EyeLink DataViewer sample report `eye_infoFull_report_fix_blink_100Hz.txt.xz` (xz-compressed, 38 MB; read directly by pandas) and per-participant behavioural files `pilot<N>/RESULTS_FILE.txt` in `Data/DataPupil_Exp4/`. The permutation test takes several hours; its saved output is `PupilAnalysis/Permutation_GroupRegression_Results_50perms.csv`.
+
+
+
+
+**Expected run time:** a couple of minutes on a normal desktop computer for behavior analysis. A model-based demo is also available: `ModelSimulations/MCMC_PEB_AsymVarModel_pymc3_Sims.ipynb` simulates the GOAL model and reproduces Figure 4 in a couple of minutes. Model fitting and pupil analysis can take a couple of hours. 
 
 
 ### License.
